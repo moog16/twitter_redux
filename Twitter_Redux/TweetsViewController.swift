@@ -31,13 +31,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         getHomeTimeline(nil)
     }
-    
-//    @IBAction func onSignOut(sender: UIBarButtonItem) {
-//        User.currentUser?.logout()
-//    }
-    
+
     func getHomeTimeline(completion:(()->())?) {
-        TwitterClient.sharedInstance.rateLimitWithParams()
+//        TwitterClient.sharedInstance.rateLimitWithParams()
         TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
             self.tweets = tweets
             self.tweetsTableView.reloadData()
@@ -104,6 +100,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tweetCellDelegate(tweetCell: TweetCell, didTapReply tweet: Tweet) {
+        self.performSegueWithIdentifier("newTweetSegue", sender: tweetCell)
+    }
+    
+    func tweetCellDelegate(tweetCell: TweetCell, didTapAvatar tweet: Tweet) {
         self.performSegueWithIdentifier("newTweetSegue", sender: tweetCell)
     }
     

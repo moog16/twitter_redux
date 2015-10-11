@@ -27,6 +27,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         menuTableView.registerNib(cellNib, forCellReuseIdentifier: "MenuCell")
         menuTableView.rowHeight = 50
         menuTableView.tableFooterView = UIView()
+        menuTableView.tableFooterView?.backgroundColor = UIColor.darkGrayColor()
         
     }
     

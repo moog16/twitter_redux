@@ -12,6 +12,7 @@ import UIKit
     optional func tweetCellDelegate(tweetCell: TweetCell, didTapRetweet tweet: Tweet)
     optional func tweetCellDelegate(tweetCell: TweetCell, didTapFavorite tweet: Tweet)
     optional func tweetCellDelegate(tweetCell: TweetCell, didTapReply tweet: Tweet)
+    optional func tweetCellDelegate(tweetCell: TweetCell, didTapAvatar tweet: Tweet)
 }
 
 class TweetCell: UITableViewCell {
@@ -75,6 +76,10 @@ class TweetCell: UITableViewCell {
             let tapReplyRecognizer = UITapGestureRecognizer(target: self, action: "onReplyTap:")
             replyImageView.userInteractionEnabled = true
             replyImageView.addGestureRecognizer(tapReplyRecognizer)
+            
+            let tapAvatarRecognizer = UITapGestureRecognizer(target: self, action: "onAvatarTap:")
+            avatarImage.userInteractionEnabled = true
+            avatarImage.addGestureRecognizer(tapAvatarRecognizer)
         }
     }
     
@@ -90,6 +95,9 @@ class TweetCell: UITableViewCell {
         delegate?.tweetCellDelegate?(self, didTapReply: tweet)
     }
     
+    func onAvatarTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        delegate?.tweetCellDelegate?(self, didTapAvatar: tweet)
+    }
     func setRetweet(tweet: Tweet) {
         if tweet.retweeted == true {
             retweetImageView.image = UIImage(named: "retweet_on")

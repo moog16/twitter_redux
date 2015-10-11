@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var heroImageView: UIImageView!
@@ -33,10 +33,12 @@ class UserProfieViewController: UIViewController, UITableViewDelegate, UITableVi
         
         userTableView.rowHeight = UITableViewAutomaticDimension
         userTableView.estimatedRowHeight = 150
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.title = "\(User.currentUser?.screenname)"
 
         
         refreshControlTableView = UIRefreshControl()
-        refreshControlTableView!.addTarget(self, action: "getUserTimeline", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControlTableView!.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         userTableView.insertSubview(refreshControlTableView!, atIndex: 0)
         getUserTimeline(nil)
         getUserBanner()
@@ -50,6 +52,12 @@ class UserProfieViewController: UIViewController, UITableViewDelegate, UITableVi
             if completion != nil {
                 completion!()
             }
+        }
+    }
+    
+    func onRefresh() {
+        getUserTimeline() {
+            refreshControlTableView?.endRefreshing()
         }
     }
     

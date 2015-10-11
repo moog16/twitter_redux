@@ -69,132 +69,39 @@
                             <constraint firstItem="NQT-hZ-i82" firstAttribute="leading" secondItem="TSH-gV-Thw" secondAttribute="leading" id="maP-UX-8rH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="L5J-eJ-BGO"/>
+                    <navigationItem key="navigationItem" id="L5J-eJ-BGO">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="kio-iR-ZCf">
+                            <connections>
+                                <action selector="onSignOut:" destination="sY9-aj-51O" id="Knu-0h-PUh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="NQT-hZ-i82" id="2OI-Tc-uCJ"/>
+                        <segue destination="hqu-5m-f1M" kind="show" identifier="newTweetSegue" id="x2l-kc-UII"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoV-2K-6kf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2820" y="466"/>
         </scene>
-        <!--Tweets View Controller-->
-        <scene sceneID="eqS-rH-pQo">
+        <!--New Tweet View Controller-->
+        <scene sceneID="1tO-qW-bxj">
             <objects>
-                <viewController storyboardIdentifier="TweetsViewController" id="NDo-PX-oyU" customClass="TweetsViewController" customModule="Twitter_Redux" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hqu-5m-f1M" customClass="NewTweetViewController" customModule="Twitter_Redux" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jHA-ri-YM1"/>
-                        <viewControllerLayoutGuide type="bottom" id="WH5-41-OvZ"/>
+                        <viewControllerLayoutGuide type="top" id="d5k-3b-A4g"/>
+                        <viewControllerLayoutGuide type="bottom" id="LCh-Yd-jSi"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tUX-IA-OFF">
+                    <view key="view" contentMode="scaleToFill" id="2pL-bH-0qM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hS4-6L-4es">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="121" id="fAn-Rw-v4W" customClass="TweetCell" customModule="Twitter_Redux" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="121"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fAn-Rw-v4W" id="Ggh-bU-WnM">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="120.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="229B26AF-8C98-4F3E-B9AB-61ACBBDBCF44" translatesAutoresizingMaskIntoConstraints="NO" id="kOJ-uh-kzA">
-                                                    <rect key="frame" x="8" y="96" width="16" height="16"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d6c-hm-DnT">
-                                                    <rect key="frame" x="8" y="8" width="50" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="HPJ-21-cbX"/>
-                                                        <constraint firstAttribute="width" constant="50" id="aMo-MZ-aVt"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="7C403C22-0AF2-41D4-B2F5-8D8446BB63BD" translatesAutoresizingMaskIntoConstraints="NO" id="sl1-gk-QWJ">
-                                                    <rect key="frame" x="123" y="96" width="16" height="16"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Moran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAd-zM-Iyl">
-                                                    <rect key="frame" x="62" y="8" width="95" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="kL4-m5-EAv"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grs-pT-Yaq">
-                                                    <rect key="frame" x="576" y="8" width="16" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.63144059990000001" green="0.63144059990000001" blue="0.63144059990000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you know you can tell if someone is a programmer simply by saying the word &quot;timezones&quot; and seeing if they cringe?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7Z-Ok-3yG">
-                                                    <rect key="frame" x="62" y="47" width="491" height="31.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="6C979296-99A2-44CE-84BE-A50B2BEDD753" translatesAutoresizingMaskIntoConstraints="NO" id="zh9-af-BIQ">
-                                                    <rect key="frame" x="64" y="96" width="19" height="16"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajA-zg-WOG">
-                                                    <rect key="frame" x="62" y="27" width="121" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="121" id="qay-go-8nH"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.63144059990000001" green="0.63144059990000001" blue="0.63144059990000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="E7Z-Ok-3yG" firstAttribute="top" secondItem="ajA-zg-WOG" secondAttribute="bottom" constant="4" id="2jU-bN-Eby"/>
-                                                <constraint firstItem="Grs-pT-Yaq" firstAttribute="centerY" secondItem="pAd-zM-Iyl" secondAttribute="centerY" id="6it-NO-tZ5"/>
-                                                <constraint firstItem="sl1-gk-QWJ" firstAttribute="centerY" secondItem="kOJ-uh-kzA" secondAttribute="centerY" id="7uz-A1-8Tl"/>
-                                                <constraint firstAttribute="trailing" secondItem="Grs-pT-Yaq" secondAttribute="trailing" constant="8" id="97I-ym-V9H"/>
-                                                <constraint firstItem="d6c-hm-DnT" firstAttribute="leading" secondItem="Ggh-bU-WnM" secondAttribute="leading" constant="8" id="DHu-TC-h1f"/>
-                                                <constraint firstItem="zh9-af-BIQ" firstAttribute="centerY" secondItem="kOJ-uh-kzA" secondAttribute="centerY" id="GSI-sW-iXG"/>
-                                                <constraint firstItem="E7Z-Ok-3yG" firstAttribute="leading" secondItem="pAd-zM-Iyl" secondAttribute="leading" id="L0g-gF-eh1"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E7Z-Ok-3yG" secondAttribute="trailing" constant="8" id="LQc-r3-rpK"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sl1-gk-QWJ" secondAttribute="trailing" constant="40" id="Qjy-kO-AVS"/>
-                                                <constraint firstItem="sl1-gk-QWJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="E7Z-Ok-3yG" secondAttribute="bottom" constant="4" id="RAX-fQ-3mm"/>
-                                                <constraint firstItem="sl1-gk-QWJ" firstAttribute="leading" secondItem="zh9-af-BIQ" secondAttribute="trailing" constant="40" id="RT6-R3-19b"/>
-                                                <constraint firstItem="kOJ-uh-kzA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d6c-hm-DnT" secondAttribute="bottom" constant="4" id="VXf-zQ-e0X"/>
-                                                <constraint firstItem="pAd-zM-Iyl" firstAttribute="top" secondItem="d6c-hm-DnT" secondAttribute="top" id="W1i-dT-RRE"/>
-                                                <constraint firstItem="zh9-af-BIQ" firstAttribute="leading" secondItem="kOJ-uh-kzA" secondAttribute="trailing" constant="40" id="XO6-i3-cxn"/>
-                                                <constraint firstItem="ajA-zg-WOG" firstAttribute="leading" secondItem="pAd-zM-Iyl" secondAttribute="leading" id="cwj-7i-HSG"/>
-                                                <constraint firstAttribute="bottom" secondItem="kOJ-uh-kzA" secondAttribute="bottom" constant="8" id="hJm-uQ-pbK"/>
-                                                <constraint firstItem="pAd-zM-Iyl" firstAttribute="leading" secondItem="d6c-hm-DnT" secondAttribute="trailing" constant="4" id="mZ0-tm-mh3"/>
-                                                <constraint firstItem="d6c-hm-DnT" firstAttribute="top" secondItem="Ggh-bU-WnM" secondAttribute="top" constant="8" id="pDK-Sb-bio"/>
-                                                <constraint firstItem="ajA-zg-WOG" firstAttribute="top" secondItem="pAd-zM-Iyl" secondAttribute="bottom" constant="4" id="vNt-KR-DpC"/>
-                                                <constraint firstItem="kOJ-uh-kzA" firstAttribute="leading" secondItem="Ggh-bU-WnM" secondAttribute="leading" constant="8" id="zWE-5m-3EN"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="avatarImage" destination="d6c-hm-DnT" id="zfS-Vj-lCR"/>
-                                            <outlet property="favoriteImageView" destination="sl1-gk-QWJ" id="dKB-9b-iRy"/>
-                                            <outlet property="messageLabel" destination="E7Z-Ok-3yG" id="Z77-bs-tTC"/>
-                                            <outlet property="nameLabel" destination="pAd-zM-Iyl" id="h13-Q6-Je8"/>
-                                            <outlet property="replyImageView" destination="kOJ-uh-kzA" id="KAw-Ql-hN4"/>
-                                            <outlet property="retweetImageView" destination="zh9-af-BIQ" id="Yqa-l8-2Gh"/>
-                                            <outlet property="timeLabel" destination="Grs-pT-Yaq" id="U4Y-Un-EIx"/>
-                                            <outlet property="usernameLabel" destination="ajA-zg-WOG" id="n3O-zY-M11"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="tweetsTableView" destination="hS4-6L-4es" id="Pjv-iX-O0G"/>
-                        <outlet property="view" destination="tUX-IA-OFF" id="qqg-zb-qKU"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Elv-KS-8NH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qk0-M8-Pdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3532" y="481"/>
+            <point key="canvasLocation" x="3693" y="-31"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bxU-TK-eHZ">
@@ -240,85 +147,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="229B26AF-8C98-4F3E-B9AB-61ACBBDBCF44" width="16" height="16">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
-GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
-DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
-RkZSZXByZXNlbnRhdGlvboAGgAdPEQKqTU0AKgAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAZgtmWGZsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZiNmdGaAZoAAAAAA
-AAAAAAAAAAAAAAAAAAAAAGYDZkZmf2aAZoBmgAAAAAAAAAAAAAAAAAAAAAAAAGYTZmZmgGaAZoBmgGaA
-AAAAAAAAAAAAAAAAAAAAAGYhZnpmgGaAZoBmgGaAZoBmgGaAZn1mZmYxZgEAAAAAZiFmemaAZoBmgGaA
-ZoBmgGaAZoBmgGaAZoBmVmYCAAAAAGYTZmZmgGaAZoBmgGaAZoBmgGaAZoBmgGaAZjYAAAAAAABmA2ZG
-Zn9mgGaAZoAAAAAAZgZmMmZ9ZoBmaQAAAAAAAAAAAABmI2Z0ZoBmgAAAAAAAAAAAZmBmgGZ8AAAAAAAA
-AAAAAAAAZgtmWGZsAAAAAAAAAABmL2Z7Zk8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAANAQAAAwAAAAEAEAAAAQEAAwAAAAEAEAAAAQIAAwAAAAIACAAIAQMAAwAAAAEAAQAAAQYAAwAA
-AAEAAQAAAREABAAAAAEAAAAIARIAAwAAAAEAAQAAARUAAwAAAAEAAgAAARYAAwAAAAEAEAAAARcABAAA
-AAEAAAIAARwAAwAAAAEAAQAAAVIAAwAAAAEAAgAAAVMAAwAAAAIAAQABAAAAANIiIyQlWiRjbGFzc25h
-bWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdlUmVwoyYnKF8QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFn
-ZVJlcFhOU09iamVjdNIiIyorV05TQXJyYXmiKijSIiMtLl5OU011dGFibGVBcnJheaMtKijTMDEJMjM0
-V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNjdXTlNDb2xvcqI2KNIiIzk6V05TSW1hZ2Wi
-OShfEA9OU0tleWVkQXJjaGl2ZXLRPT5Ucm9vdIABAAgAEQAaACMALQAyADcARQBLAFQAWwBoAG8AdwB5
-AH4AgACCAIcAkgCUAJYAmACdAKAAogCkAKYAqACtAMQAxgDIA3YDewOGA48DogOmA7kDxAPNA9ID2gPd
-A+ID8QP1A/wEBAQRBBYEGAQaBB8EJwQqBC8ENwQ6BEwETwRUAAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAA
-AAAAAAAABFY
-</mutableData>
-        </image>
-        <image name="6C979296-99A2-44CE-84BE-A50B2BEDD753" width="19" height="16">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
-GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
-DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
-RkZSZXByZXNlbnRhdGlvboAGgAdPEQMKTU0AKgAAAmgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmN2Z3Zi5mAGYAZhFmbGaAZoBmgGaAZnxmQWYA
-ZgBmAGYAZgBmOGZ/ZoBmfmYwZgBmOWaAZoBmgGaAZoBmgGZ9ZgBmAGYAZgBmOWaAZoBmgGaAZn9mMmYU
-Zm9mgGaAZoBmgGaAZoBmAGYAZgBmLWaAZoBmgGaAZoBmgGZ/ZiRmAGYAZgBmAGaAZoBmgGYAZgBmAGYs
-Zn1mgGaAZoBmgGaAZnxmJGYAZgBmAGYAZoBmgGaAZgBmAGYAZgBmAGYAZoBmgGaAZgBmAGYAZgBmAGYA
-ZgBmgGaAZoBmAGYAZgBmAGYAZgBmgGaAZoBmAGYAZgBmAGYhZnxmgGaAZoBmgGaAZn1mLWYAZgBmAGaA
-ZoBmgGYAZgBmAGYAZiRmf2aAZoBmgGaAZoBmgGYsZgBmAGYAZoBmgGaAZoBmgGaAZm9mFGYxZn5mgGaA
-ZoBmgGY5ZgBmAGYAZgBmfWaAZoBmgGaAZoBmgGY5ZgBmMGZ+ZoBmf2Y4ZgBmAGYAZgBmAGZBZn1mgGaA
-ZoBmgGZtZhBmAGYAZi5meGY3ZgBmAGYAZgBmAGYAZgBmAGYAZgBmAGYAZgBmAGYAZgBmAGYAZgBmAGYA
-ZgBmAGYAZgBmAGYAZgBmAGYAZgBmAGYAZgBmAGYAZgBmAGYAZgBmAAANAQAAAwAAAAEAEwAAAQEAAwAA
-AAEAEAAAAQIAAwAAAAIACAAIAQMAAwAAAAEAAQAAAQYAAwAAAAEAAQAAAREABAAAAAEAAAAIARIAAwAA
-AAEAAQAAARUAAwAAAAEAAgAAARYAAwAAAAEAEAAAARcABAAAAAEAAAJgARwAAwAAAAEAAQAAAVIAAwAA
-AAEAAgAAAVMAAwAAAAIAAQABAAAAANIiIyQlWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcElt
-YWdlUmVwoyYnKF8QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFnZVJlcFhOU09iamVjdNIiIyorV05TQXJy
-YXmiKijSIiMtLl5OU011dGFibGVBcnJheaMtKijTMDEJMjM0V05TV2hpdGVcTlNDb2xvclNwYWNlRDAg
-MAAQA4AL0iIjNjdXTlNDb2xvcqI2KNIiIzk6V05TSW1hZ2WiOShfEA9OU0tleWVkQXJjaGl2ZXLRPT5U
-cm9vdIABAAgAEQAaACMALQAyADcARQBLAFQAWwBoAG8AdwB5AH4AgACCAIcAkgCUAJYAmACdAKAAogCk
-AKYAqACtAMQAxgDIA9YD2wPmA+8EAgQGBBkEJAQtBDIEOgQ9BEIEUQRVBFwEZARxBHYEeAR6BH8EhwSK
-BI8ElwSaBKwErwS0AAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAAAAAAAAAABLY
-</mutableData>
-        </image>
-        <image name="7C403C22-0AF2-41D4-B2F5-8D8446BB63BD" width="16" height="16">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
-GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
-DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
-RkZSZXByZXNlbnRhdGlvboAGgAdPEQKqTU0AKgAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAZiRmIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZglmfGZ8ZggAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAABmL2aAZoBmLwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGZYZoBmgGZX
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAGYGZntmgGaAZntmBQAAAAAAAAAAAAAAAGZhZoBmgGaAZoBmgGaA
-ZoBmgGaAZoBmgGaAZmMAAAAAZmdmgGaAZoBmgGaAZoBmgGaAZoBmgGaAZoBmaAAAAABmBmZEZn1mgGaA
-ZoBmgGaAZoBmgGaAZn1mRGYGAAAAAAAAAABmFWZlZoBmgGaAZoBmgGaAZmVmFQAAAAAAAAAAAAAAAAAA
-ZlRmgGaAZoBmgGaAZoBmVAAAAAAAAAAAAAAAAAAAZgdme2aAZoBmgGaAZoBmgGZ7ZgcAAAAAAAAAAAAA
-AABmMGaAZoBmgGZSZlJmgGaAZoBmLwAAAAAAAAAAAAAAAGZbZoBme2YzAAAAAGYzZntmgGZbAAAAAAAA
-AAAAAAAAZjpmYGYWAAAAAAAAAABmFmZfZjwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAANAQAAAwAAAAEAEAAAAQEAAwAAAAEAEAAAAQIAAwAAAAIACAAIAQMAAwAAAAEAAQAAAQYAAwAA
-AAEAAQAAAREABAAAAAEAAAAIARIAAwAAAAEAAQAAARUAAwAAAAEAAgAAARYAAwAAAAEAEAAAARcABAAA
-AAEAAAIAARwAAwAAAAEAAQAAAVIAAwAAAAEAAgAAAVMAAwAAAAIAAQABAAAAANIiIyQlWiRjbGFzc25h
-bWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdlUmVwoyYnKF8QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFn
-ZVJlcFhOU09iamVjdNIiIyorV05TQXJyYXmiKijSIiMtLl5OU011dGFibGVBcnJheaMtKijTMDEJMjM0
-V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNjdXTlNDb2xvcqI2KNIiIzk6V05TSW1hZ2Wi
-OShfEA9OU0tleWVkQXJjaGl2ZXLRPT5Ucm9vdIABAAgAEQAaACMALQAyADcARQBLAFQAWwBoAG8AdwB5
-AH4AgACCAIcAkgCUAJYAmACdAKAAogCkAKYAqACtAMQAxgDIA3YDewOGA48DogOmA7kDxAPNA9ID2gPd
-A+ID8QP1A/wEBAQRBBYEGAQaBB8EJwQqBC8ENwQ6BEwETwRUAAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAA
-AAAAAAAABFY
-</mutableData>
-        </image>
         <image name="TwitterLogo_white" width="1687" height="1687"/>
         <image name="sign-in-with-twitter-gray" width="158" height="28"/>
     </resources>

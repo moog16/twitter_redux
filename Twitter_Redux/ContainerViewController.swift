@@ -14,7 +14,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
     var selectedViewController: UIViewController?
     let viewControllers = [
         TweetsViewController(nibName: "TweetsViewController", bundle: NSBundle.mainBundle()),
-        UserProfieViewController(nibName: "UserProfieViewController", bundle: NSBundle.mainBundle())
+        UserProfileViewController(nibName: "UserProfileViewController", bundle: NSBundle.mainBundle())
     ]
     
     
@@ -26,9 +26,8 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
         addContainerView()
         addMenuView()
         createContraints()
-        
-        
-        let containerViewCenter = CGPoint(x: 250, y: menuView!.frame.height)
+   
+        let containerViewCenter = CGPoint(x: 250, y: 0)
         let time = dispatch_time(DISPATCH_TIME_NOW, 0)
         
         dispatch_after(time, dispatch_get_main_queue(), {
@@ -48,10 +47,11 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
         containerView = viewController.view
         containerView!.translatesAutoresizingMaskIntoConstraints = false
         viewController.didMoveToParentViewController(self)
+        scrollView!.addSubview(containerView!)
         selectedViewController = viewController
     }
     
-    func menuViewControllerDelegate(menuViewController: MenuViewController, selectedMenuTab: String) {
+    func menuViewControllerDelegate(menuViewController: MenuViewController, didTapMenuTab selectedMenuTab: String) {
         var viewController: UIViewController?
         switch(selectedMenuTab) {
         case "Home Timeline":
@@ -62,8 +62,15 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
             viewController = viewControllers[1]
         }
         selectViewController(viewController!)
+        let containerViewCenter = CGPoint(x: 250, y: 0)
+        
+        createContraints()
+        self.scrollView!.setContentOffset(containerViewCenter, animated: true)
     }
     
+    @IBAction func onSignOut(sender: UIBarButtonItem) {
+        User.currentUser?.logout()
+    }
     
     private func addScrollView() {
 //        scrollView!.delegate = self
@@ -76,34 +83,30 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
     
     private func addContainerView() {
         selectViewController(viewControllers[1])
+        selectedViewController = viewControllers[1]
         scrollView!.addSubview(containerView!)
     }
     
     private func addMenuView() {
         let menuViewController = MenuViewController(nibName: "MenuViewController", bundle: nil)
+        menuViewController.delegate = self
         self.addChildViewController(menuViewController)
         menuView = menuViewController.view
-        menuView?.backgroundColor = UIColor.darkGrayColor()
         menuView!.translatesAutoresizingMaskIntoConstraints = false
         scrollView!.addSubview(menuView!)
         menuViewController.didMoveToParentViewController(self)
     }
     
     private func createContraints() {
-        let navigationBarHeight = navigationController!.navigationBar.frame.height + 20
         let views = [
             "menuView": menuView!,
             "containerView": containerView!,
             "scrollView": scrollView!,
             "view": view!
         ]
-        let metrics = [
-            "navigationBarHeight": navigationBarHeight
-        ]
-
         
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[containerView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[containerView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuView(250)][containerView(==view)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
     }
     
