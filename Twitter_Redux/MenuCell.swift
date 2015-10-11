@@ -14,7 +14,6 @@ class MenuCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("hello")
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

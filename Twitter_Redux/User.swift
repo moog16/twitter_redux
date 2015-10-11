@@ -18,6 +18,9 @@ class User: NSObject {
     var profileImageUrl: String?
     var tagline: String?
     var dictionary: NSDictionary?
+    var followersCount: Int?
+    var followingCount: Int?
+    var tweetsCount: Int?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -33,6 +36,19 @@ class User: NSObject {
         if let profileImageUrl = dictionary["profile_image_url"] {
             self.profileImageUrl = (profileImageUrl as!String).stringByReplacingOccurrencesOfString("_normal.", withString: "_bigger.")
         }
+
+        if let friendsCount = dictionary["friends_count"] as? Int {
+            followingCount = friendsCount
+        }
+        
+        if let followersCount = dictionary["followers_count"] as? Int {
+            self.followersCount = followersCount
+        }
+        
+        if let statusesCount = dictionary["statuses_count"] as? Int {
+            tweetsCount = statusesCount
+        }
+
     }
     
     func logout() {

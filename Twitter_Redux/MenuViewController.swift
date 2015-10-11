@@ -9,16 +9,13 @@
 import UIKit
 
 @objc protocol MenuViewControllerDelegate {
-    optional func menuViewControllerDelegate(menuViewController: MenuViewController, didTapMenuTab menuTab: String)
+    optional func menuViewControllerDelegate(menuViewController: MenuViewController, didTapMenuTab selectedMenuTab: String)
 }
 
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var menuTableView: UITableView!
-    let menuTabs = ["Home Timeline", "Mentions", "Profile", "Account"]
-    let viewControllers = [
-        TweetsViewController(nibName:)
-    ]
+    let menuTabs = ["Home Timeline", "Profile", "Mentions", "Account"]
     var delegate: MenuViewControllerDelegate?
     
     override func viewDidLoad() {

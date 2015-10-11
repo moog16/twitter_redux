@@ -54,6 +54,26 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 completion(tweets: nil, error: error)
         }
     }
+
+    func userTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/user_timeline.json", parameters: params, success:
+            { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                completion(tweets: tweets, error: nil)
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                completion(tweets: nil, error: error)
+        }
+    }
+    
+    func userProfileBannerWithParams(params: NSDictionary?, completion: (sizes: NSDictionary?, error: NSError?) -> ()) {
+        GET("1.1/users/profile_banner.json", parameters: params, success:
+            { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                let sizes = response["sizes"] as? NSDictionary
+                completion(sizes: sizes, error: nil)
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                completion(sizes: nil, error: error)
+        }
+    }
     
     func rateLimitWithParams() {
         // check on how many times i've hit end point

@@ -19,10 +19,11 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var replyImageView: UIImageView!
+    @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var retweetImageView: UIImageView!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     
     var isSingleTweetView = false
     weak var delegate: TweetCellDelegate?

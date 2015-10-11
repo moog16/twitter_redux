@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="474" height="122.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="0A73315C-B64A-4EBC-A4BF-9BAC1C652784" translatesAutoresizingMaskIntoConstraints="NO" id="EhZ-jL-aff">
+                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="21239E47-0AF3-4CE2-AAB3-331B67306DB4" translatesAutoresizingMaskIntoConstraints="NO" id="EhZ-jL-aff">
                         <rect key="frame" x="62" y="90" width="16" height="16"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kLM-2m-ypb">
@@ -23,7 +23,7 @@
                             <constraint firstAttribute="width" constant="50" id="joI-FP-Zhu"/>
                         </constraints>
                     </imageView>
-                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="862B90CB-F1C1-4B48-B9F6-D0043F824CEF" translatesAutoresizingMaskIntoConstraints="NO" id="icB-Fs-IjY">
+                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="835234D4-C72A-400C-A6F7-6A4CEC08AC60" translatesAutoresizingMaskIntoConstraints="NO" id="icB-Fs-IjY">
                         <rect key="frame" x="177" y="90" width="16" height="16"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Moran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWD-Ai-lpx">
@@ -53,7 +53,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="1853601B-55B7-4DA7-8534-C001F16A6356" translatesAutoresizingMaskIntoConstraints="NO" id="TPK-xw-QzY">
+                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="876F7BF8-2F43-432F-824A-CD33D13A8455" translatesAutoresizingMaskIntoConstraints="NO" id="TPK-xw-QzY">
                         <rect key="frame" x="118" y="82" width="19" height="32.5"/>
                     </imageView>
                 </subviews>
@@ -90,11 +90,21 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImage" destination="kLM-2m-ypb" id="nZW-2p-gnB"/>
+                <outlet property="favoriteImageView" destination="icB-Fs-IjY" id="4Gl-ho-sJa"/>
+                <outlet property="messageLabel" destination="gyf-jh-V5g" id="4LZ-fS-VJM"/>
+                <outlet property="nameLabel" destination="OWD-Ai-lpx" id="pXI-7K-FZI"/>
+                <outlet property="replyImageView" destination="EhZ-jL-aff" id="pVv-bE-1Fr"/>
+                <outlet property="retweetImageView" destination="TPK-xw-QzY" id="RAG-qK-R2X"/>
+                <outlet property="timeLabel" destination="9x6-OJ-Ww1" id="mg7-VR-UGw"/>
+                <outlet property="usernameLabel" destination="FuA-nl-efp" id="7Hs-c1-eML"/>
+            </connections>
             <point key="canvasLocation" x="228" y="419.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="0A73315C-B64A-4EBC-A4BF-9BAC1C652784" width="16" height="16">
+        <image name="21239E47-0AF3-4CE2-AAB3-331B67306DB4" width="16" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -120,7 +130,33 @@ A+ID8QP1A/wEBAQRBBYEGAQaBB8EJwQqBC8ENwQ6BEwETwRUAAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAA
 AAAAAAAABFY
 </mutableData>
         </image>
-        <image name="1853601B-55B7-4DA7-8534-C001F16A6356" width="19" height="16">
+        <image name="835234D4-C72A-400C-A6F7-6A4CEC08AC60" width="16" height="16">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
+GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
+DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
+RkZSZXByZXNlbnRhdGlvboAGgAdPEQKqTU0AKgAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAZiRmIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZglmfGZ8ZggAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAABmL2aAZoBmLwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGZYZoBmgGZX
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAGYGZntmgGaAZntmBQAAAAAAAAAAAAAAAGZhZoBmgGaAZoBmgGaA
+ZoBmgGaAZoBmgGaAZmMAAAAAZmdmgGaAZoBmgGaAZoBmgGaAZoBmgGaAZoBmaAAAAABmBmZEZn1mgGaA
+ZoBmgGaAZoBmgGaAZn1mRGYGAAAAAAAAAABmFWZlZoBmgGaAZoBmgGaAZmVmFQAAAAAAAAAAAAAAAAAA
+ZlRmgGaAZoBmgGaAZoBmVAAAAAAAAAAAAAAAAAAAZgdme2aAZoBmgGaAZoBmgGZ7ZgcAAAAAAAAAAAAA
+AABmMGaAZoBmgGZSZlJmgGaAZoBmLwAAAAAAAAAAAAAAAGZbZoBme2YzAAAAAGYzZntmgGZbAAAAAAAA
+AAAAAAAAZjpmYGYWAAAAAAAAAABmFmZfZjwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAANAQAAAwAAAAEAEAAAAQEAAwAAAAEAEAAAAQIAAwAAAAIACAAIAQMAAwAAAAEAAQAAAQYAAwAA
+AAEAAQAAAREABAAAAAEAAAAIARIAAwAAAAEAAQAAARUAAwAAAAEAAgAAARYAAwAAAAEAEAAAARcABAAA
+AAEAAAIAARwAAwAAAAEAAQAAAVIAAwAAAAEAAgAAAVMAAwAAAAIAAQABAAAAANIiIyQlWiRjbGFzc25h
+bWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdlUmVwoyYnKF8QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFn
+ZVJlcFhOU09iamVjdNIiIyorV05TQXJyYXmiKijSIiMtLl5OU011dGFibGVBcnJheaMtKijTMDEJMjM0
+V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNjdXTlNDb2xvcqI2KNIiIzk6V05TSW1hZ2Wi
+OShfEA9OU0tleWVkQXJjaGl2ZXLRPT5Ucm9vdIABAAgAEQAaACMALQAyADcARQBLAFQAWwBoAG8AdwB5
+AH4AgACCAIcAkgCUAJYAmACdAKAAogCkAKYAqACtAMQAxgDIA3YDewOGA48DogOmA7kDxAPNA9ID2gPd
+A+ID8QP1A/wEBAQRBBYEGAQaBB8EJwQqBC8ENwQ6BEwETwRUAAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAA
+AAAAAAAABFY
+</mutableData>
+        </image>
+        <image name="876F7BF8-2F43-432F-824A-CD33D13A8455" width="19" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -145,32 +181,6 @@ MAAQA4AL0iIjNjdXTlNDb2xvcqI2KNIiIzk6V05TSW1hZ2WiOShfEA9OU0tleWVkQXJjaGl2ZXLRPT5U
 cm9vdIABAAgAEQAaACMALQAyADcARQBLAFQAWwBoAG8AdwB5AH4AgACCAIcAkgCUAJYAmACdAKAAogCk
 AKYAqACtAMQAxgDIA9YD2wPmA+8EAgQGBBkEJAQtBDIEOgQ9BEIEUQRVBFwEZARxBHYEeAR6BH8EhwSK
 BI8ElwSaBKwErwS0AAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAAAAAAAAAABLY
-</mutableData>
-        </image>
-        <image name="862B90CB-F1C1-4B48-B9F6-D0043F824CEF" width="16" height="16">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
-GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
-DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
-RkZSZXByZXNlbnRhdGlvboAGgAdPEQKqTU0AKgAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAZiRmIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZglmfGZ8ZggAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAABmL2aAZoBmLwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGZYZoBmgGZX
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAGYGZntmgGaAZntmBQAAAAAAAAAAAAAAAGZhZoBmgGaAZoBmgGaA
-ZoBmgGaAZoBmgGaAZmMAAAAAZmdmgGaAZoBmgGaAZoBmgGaAZoBmgGaAZoBmaAAAAABmBmZEZn1mgGaA
-ZoBmgGaAZoBmgGaAZn1mRGYGAAAAAAAAAABmFWZlZoBmgGaAZoBmgGaAZmVmFQAAAAAAAAAAAAAAAAAA
-ZlRmgGaAZoBmgGaAZoBmVAAAAAAAAAAAAAAAAAAAZgdme2aAZoBmgGaAZoBmgGZ7ZgcAAAAAAAAAAAAA
-AABmMGaAZoBmgGZSZlJmgGaAZoBmLwAAAAAAAAAAAAAAAGZbZoBme2YzAAAAAGYzZntmgGZbAAAAAAAA
-AAAAAAAAZjpmYGYWAAAAAAAAAABmFmZfZjwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAANAQAAAwAAAAEAEAAAAQEAAwAAAAEAEAAAAQIAAwAAAAIACAAIAQMAAwAAAAEAAQAAAQYAAwAA
-AAEAAQAAAREABAAAAAEAAAAIARIAAwAAAAEAAQAAARUAAwAAAAEAAgAAARYAAwAAAAEAEAAAARcABAAA
-AAEAAAIAARwAAwAAAAEAAQAAAVIAAwAAAAEAAgAAAVMAAwAAAAIAAQABAAAAANIiIyQlWiRjbGFzc25h
-bWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdlUmVwoyYnKF8QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFn
-ZVJlcFhOU09iamVjdNIiIyorV05TQXJyYXmiKijSIiMtLl5OU011dGFibGVBcnJheaMtKijTMDEJMjM0
-V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNjdXTlNDb2xvcqI2KNIiIzk6V05TSW1hZ2Wi
-OShfEA9OU0tleWVkQXJjaGl2ZXLRPT5Ucm9vdIABAAgAEQAaACMALQAyADcARQBLAFQAWwBoAG8AdwB5
-AH4AgACCAIcAkgCUAJYAmACdAKAAogCkAKYAqACtAMQAxgDIA3YDewOGA48DogOmA7kDxAPNA9ID2gPd
-A+ID8QP1A/wEBAQRBBYEGAQaBB8EJwQqBC8ENwQ6BEwETwRUAAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAA
-AAAAAAAABFY
 </mutableData>
         </image>
     </resources>
