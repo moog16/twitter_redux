@@ -95,7 +95,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         let screennameView = UIView()
         screennameView.addSubview(screennameLabel)
         screennameView.translatesAutoresizingMaskIntoConstraints = false
+        
         screennameLabel.translatesAutoresizingMaskIntoConstraints = false
+        screennameLabel.font = UIFont(name: "Helvetica-Bold", size: 17)
+        screennameLabel.textColor = UIColor.whiteColor()
+        
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.numberOfLines = 0
         descriptionLabel.font = UIFont(name: "Helvetica-Bold", size: 17)
@@ -106,8 +110,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         descriptionScrollView.pagingEnabled = true
         descriptionScrollView.contentSize = CGSizeMake(2*pageWidth, pageHeight)
         descriptionScrollView.showsHorizontalScrollIndicator = false
-        descriptionScrollView.addSubview(screennameView)
         descriptionScrollView.addSubview(descriptionView)
+        descriptionScrollView.addSubview(screennameView)
         descriptionScrollView.delegate = self
         pageControl.numberOfPages = 2
         
@@ -121,7 +125,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[screennameLabel]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[descriptionLabel]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[descriptionLabel(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[screennameLabel(==scrollView)]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[descriptionLabel(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[screennameView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[descriptionView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
@@ -175,7 +179,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             let avatarUrl = NSURL(string: user.profileImageUrl!)
             avatarImageView.setImageWithURL(avatarUrl!)
             usernameLabel.text = user.name
-            screennameLabel.text = user.screenname!
+            screennameLabel.text = "@\(user.screenname!)"
             descriptionLabel.text = user.userDescription!
 
             followingCountLabel.text = "\(user.followingCount!)"
