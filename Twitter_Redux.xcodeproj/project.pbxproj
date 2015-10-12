@@ -24,6 +24,8 @@
 		CBC517AE1BCAE00000BA06BC /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC517AC1BCAE00000BA06BC /* TweetCell.xib */; settings = {ASSET_TAGS = (); }; };
 		CBC517B11BCAED1D00BA06BC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC517AF1BCAED1D00BA06BC /* UserProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		CBC517B21BCAED1D00BA06BC /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC517B01BCAED1D00BA06BC /* UserProfileViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		CBC517BD1BCB363600BA06BC /* MentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC517BB1BCB363600BA06BC /* MentionsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		CBC517BE1BCB363600BA06BC /* MentionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC517BC1BCB363600BA06BC /* MentionsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		CBEBFFD41BC4498C002672C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEBFFD31BC4498C002672C8 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		CBEBFFD61BC44995002672C8 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEBFFD51BC44995002672C8 /* Tweet.swift */; settings = {ASSET_TAGS = (); }; };
 		CBEBFFD81BC449A4002672C8 /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEBFFD71BC449A4002672C8 /* TweetViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -54,6 +56,8 @@
 		CBC517AC1BCAE00000BA06BC /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		CBC517AF1BCAED1D00BA06BC /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		CBC517B01BCAED1D00BA06BC /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
+		CBC517BB1BCB363600BA06BC /* MentionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsViewController.swift; sourceTree = "<group>"; };
+		CBC517BC1BCB363600BA06BC /* MentionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsViewController.xib; sourceTree = "<group>"; };
 		CBEBFFD31BC4498C002672C8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CBEBFFD51BC44995002672C8 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		CBEBFFD71BC449A4002672C8 /* TweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 		CB4704971BC9E8B400669CA4 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				CBC517BC1BCB363600BA06BC /* MentionsViewController.xib */,
 				CB4704901BC9E10500669CA4 /* MenuViewController.xib */,
 				CBC517B01BCAED1D00BA06BC /* UserProfileViewController.xib */,
 				CB4704941BC9E89100669CA4 /* MenuCell.xib */,
@@ -163,6 +168,7 @@
 				CB47048F1BC9E10500669CA4 /* MenuViewController.swift */,
 				CBC517A71BCADF4300BA06BC /* TweetsViewController.swift */,
 				CBC517AF1BCAED1D00BA06BC /* UserProfileViewController.swift */,
+				CBC517BB1BCB363600BA06BC /* MentionsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 				CBC517AA1BCADF4300BA06BC /* TweetsViewController.xib in Resources */,
 				CB80B1061BC446E100C18DFD /* LaunchScreen.storyboard in Resources */,
 				CB80B1031BC446E100C18DFD /* Assets.xcassets in Resources */,
+				CBC517BE1BCB363600BA06BC /* MentionsViewController.xib in Resources */,
 				CBC517AE1BCAE00000BA06BC /* TweetCell.xib in Resources */,
 				CB4704961BC9E89100669CA4 /* MenuCell.xib in Resources */,
 				CB80B1011BC446E100C18DFD /* Main.storyboard in Resources */,
@@ -299,6 +306,7 @@
 				CB4704951BC9E89100669CA4 /* MenuCell.swift in Sources */,
 				CBC517AD1BCAE00000BA06BC /* TweetCell.swift in Sources */,
 				CBEBFFDE1BC449D7002672C8 /* LoginViewController.swift in Sources */,
+				CBC517BD1BCB363600BA06BC /* MentionsViewController.swift in Sources */,
 				CBEBFFD41BC4498C002672C8 /* User.swift in Sources */,
 				CB47048E1BC8753A00669CA4 /* ContainerViewController.swift in Sources */,
 				CBC517A91BCADF4300BA06BC /* TweetsViewController.swift in Sources */,

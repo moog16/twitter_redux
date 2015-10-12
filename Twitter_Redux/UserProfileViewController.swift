@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var heroImageView: UIImageView!
@@ -17,6 +17,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tweetCountLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var descriptionScrollView: UIScrollView!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
+    
+    var descriptionLabel: UILabel = UILabel()
+    var screennameLabel: UILabel = UILabel()
     var userStatuses: [NSDictionary] = []
     
     var tweets: [Tweet]?
@@ -43,17 +50,28 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         userTableView.rowHeight = UITableViewAutomaticDimension
         userTableView.estimatedRowHeight = 150
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-//        navigationController?.title = "\(User.currentUser?.screenname)"
-
         
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView!.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         userTableView.insertSubview(refreshControlTableView!, atIndex: 0)
         
         
-        getUserTimeline(profileUser.screenname, completion: nil)
-        getUserBanner(profileUser.screenname)
-        setProfileStatuses(profileUser)
+        createPageControl()
+        
+        if let profileUser = profileUser {
+            getUserTimeline(profileUser.screenname, completion: nil)
+            getUserBanner(profileUser.screenname)
+            setProfileStatuses(profileUser)
+        }
+    }
+    
+    @IBAction func didChangePage(sender: UIPageControl) {
+        let xOffset = descriptionScrollView.bounds.width * CGFloat(pageControl.currentPage)
+        descriptionScrollView.setContentOffset(CGPointMake(xOffset,0) , animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        pageControl.currentPage = Int(descriptionScrollView.contentOffset.x / descriptionScrollView.bounds.width)
     }
     
     func getUserTimeline(screenname: String?, completion:(()->())?) {
@@ -70,6 +88,45 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func createPageControl() {
+        let descriptionView = UIView()
+        descriptionView.addSubview(descriptionLabel)
+        descriptionView.translatesAutoresizingMaskIntoConstraints = false
+        let screennameView = UIView()
+        screennameView.addSubview(screennameLabel)
+        screennameView.translatesAutoresizingMaskIntoConstraints = false
+        screennameLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.font = UIFont(name: "Helvetica-Bold", size: 17)
+        descriptionLabel.textColor = UIColor.whiteColor()
+        
+        let pageWidth = descriptionScrollView.bounds.width
+        let pageHeight = descriptionScrollView.bounds.height
+        descriptionScrollView.pagingEnabled = true
+        descriptionScrollView.contentSize = CGSizeMake(2*pageWidth, pageHeight)
+        descriptionScrollView.showsHorizontalScrollIndicator = false
+        descriptionScrollView.addSubview(screennameView)
+        descriptionScrollView.addSubview(descriptionView)
+        descriptionScrollView.delegate = self
+        pageControl.numberOfPages = 2
+        
+        let views = [
+            "descriptionView": descriptionView,
+            "screennameView": screennameView,
+            "descriptionLabel": descriptionLabel,
+            "screennameLabel": screennameLabel,
+            "scrollView": descriptionScrollView
+        ]
+        
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[screennameLabel]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[descriptionLabel]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[descriptionLabel(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[descriptionLabel(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[screennameView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[descriptionView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[descriptionView(==scrollView)][screennameView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+    }
     func onRefresh() {
         getUserTimeline(profileUser?.screenname) {
             refreshControlTableView?.endRefreshing()
@@ -117,22 +174,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         if let user = user {
             let avatarUrl = NSURL(string: user.profileImageUrl!)
             avatarImageView.setImageWithURL(avatarUrl!)
+            usernameLabel.text = user.name
+            screennameLabel.text = user.screenname!
+            descriptionLabel.text = user.userDescription!
 
             followingCountLabel.text = "\(user.followingCount!)"
             followersCountLabel.text = "\(user.followersCount!)"
             tweetCountLabel.text = "\(user.tweetsCount!)"
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

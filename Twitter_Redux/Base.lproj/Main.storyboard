@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="1271" y="466"/>
         </scene>
-        <!--Container View Controller-->
+        <!--Twitter-->
         <scene sceneID="vh7-HX-PoT">
             <objects>
                 <viewController storyboardIdentifier="ContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sY9-aj-51O" customClass="ContainerViewController" customModule="Twitter_Redux" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,7 +69,7 @@
                             <constraint firstItem="NQT-hZ-i82" firstAttribute="leading" secondItem="TSH-gV-Thw" secondAttribute="leading" id="maP-UX-8rH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="L5J-eJ-BGO">
+                    <navigationItem key="navigationItem" title="Twitter" id="L5J-eJ-BGO">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="kio-iR-ZCf">
                             <connections>
                                 <action selector="onSignOut:" destination="sY9-aj-51O" id="Knu-0h-PUh"/>
@@ -78,30 +78,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="NQT-hZ-i82" id="2OI-Tc-uCJ"/>
-                        <segue destination="hqu-5m-f1M" kind="show" identifier="newTweetSegue" id="x2l-kc-UII"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoV-2K-6kf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2820" y="466"/>
-        </scene>
-        <!--New Tweet View Controller-->
-        <scene sceneID="1tO-qW-bxj">
-            <objects>
-                <viewController id="hqu-5m-f1M" customClass="NewTweetViewController" customModule="Twitter_Redux" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d5k-3b-A4g"/>
-                        <viewControllerLayoutGuide type="bottom" id="LCh-Yd-jSi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2pL-bH-0qM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qk0-M8-Pdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3693" y="-31"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bxU-TK-eHZ">
@@ -135,6 +116,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

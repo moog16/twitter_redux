@@ -75,6 +75,17 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
+    func userMentionsWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/mentions_timeline.json", parameters: params, success:
+            { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                let response = response as? [NSDictionary]
+                let userMentions = Tweet.tweetsWithArray(response!)
+                completion(tweets: userMentions, error: nil)
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                completion(tweets: nil, error: error)
+        }
+    }
+    
     func rateLimitWithParams() {
         // check on how many times i've hit end point
         let params = ["resources":"statuses"]

@@ -15,7 +15,7 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var menuTableView: UITableView!
-    let menuTabs = ["Home Timeline", "Profile", "Mentions", "Account"]
+    let menuTabs = ["Home Timeline", "Profile", "Mentions"]
     var delegate: MenuViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -26,8 +26,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cellNib = UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle())
         menuTableView.registerNib(cellNib, forCellReuseIdentifier: "MenuCell")
         menuTableView.rowHeight = 50
-        menuTableView.tableFooterView = UIView()
-        menuTableView.tableFooterView?.backgroundColor = UIColor.darkGrayColor()
+        
+        let backgroundView = UIView(frame: CGRectZero)
+        menuTableView.tableFooterView = backgroundView
+        menuTableView.backgroundColor = UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         
     }
     

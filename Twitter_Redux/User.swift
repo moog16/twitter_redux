@@ -21,6 +21,7 @@ class User: NSObject {
     var followersCount: Int?
     var followingCount: Int?
     var tweetsCount: Int?
+    var userDescription: String?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -47,6 +48,10 @@ class User: NSObject {
         
         if let statusesCount = dictionary["statuses_count"] as? Int {
             tweetsCount = statusesCount
+        }
+        
+        if let description = dictionary["description"] as? String {
+            userDescription = description
         }
 
     }

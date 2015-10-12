@@ -14,9 +14,9 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
     var selectedViewController: UIViewController?
     let viewControllers = [
         TweetsViewController(nibName: "TweetsViewController", bundle: NSBundle.mainBundle()),
-        UserProfileViewController(nibName: "UserProfileViewController", bundle: NSBundle.mainBundle())
+        UserProfileViewController(nibName: "UserProfileViewController", bundle: NSBundle.mainBundle()),
+        MentionsViewController(nibName: "MentionsViewController", bundle: NSBundle.mainBundle())
     ]
-    
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -56,6 +56,9 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
             selectViewController(tweetsViewController)
         case "Profile":
             selectCurrentUser()
+        case "Mentions":
+            let mentionViewController = viewControllers[2]
+            selectViewController(mentionViewController)
         default:
             selectCurrentUser()
         }

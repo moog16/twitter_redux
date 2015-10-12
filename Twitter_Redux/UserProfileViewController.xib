@@ -4,14 +4,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserProfieViewController" customModule="Twitter_Redux" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserProfileViewController" customModule="Twitter_Redux" customModuleProvider="target">
             <connections>
                 <outlet property="avatarImageView" destination="u2K-od-TuB" id="Dya-cn-QXf"/>
+                <outlet property="descriptionScrollView" destination="a7H-sv-LW5" id="QOC-MV-fbr"/>
                 <outlet property="followersCountLabel" destination="kv3-kz-6mh" id="jUP-fB-mSo"/>
                 <outlet property="followingCountLabel" destination="DlL-HF-EUQ" id="ZvO-bD-vHL"/>
                 <outlet property="heroImageView" destination="TlS-t6-hpN" id="rGc-1y-UUg"/>
+                <outlet property="pageControl" destination="7Is-Rr-Mbx" id="Lef-YT-KfI"/>
                 <outlet property="tweetCountLabel" destination="ZLW-TA-eid" id="q2K-tP-YrJ"/>
                 <outlet property="userTableView" destination="Bvc-Fl-3DH" id="iy3-Xy-3hK"/>
+                <outlet property="usernameLabel" destination="GU3-ul-tm4" id="W2b-uL-QXH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,7 +33,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="225"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-Ah-fGp">
-                                    <rect key="frame" x="250" y="63" width="100" height="100"/>
+                                    <rect key="frame" x="250" y="25" width="100" height="100"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u2K-od-TuB" userLabel="Avatar Image">
                                             <rect key="frame" x="5" y="5" width="90" height="90"/>
@@ -48,15 +51,43 @@
                                         <constraint firstAttribute="width" constant="100" id="lJw-yM-htX"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GU3-ul-tm4">
+                                    <rect key="frame" x="276" y="129" width="47.5" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="DB1-kx-TdE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7H-sv-LW5">
+                                    <rect key="frame" x="8" y="192" width="584" height="25"/>
+                                </scrollView>
+                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7Is-Rr-Mbx">
+                                    <rect key="frame" x="280" y="152" width="39" height="38"/>
+                                    <connections>
+                                        <action selector="didChangePage:" destination="-1" eventType="valueChanged" id="Wj6-uM-arj"/>
+                                    </connections>
+                                </pageControl>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="a7H-sv-LW5" firstAttribute="centerX" secondItem="GU3-ul-tm4" secondAttribute="centerX" id="0op-mB-w4Z"/>
+                                <constraint firstItem="a7H-sv-LW5" firstAttribute="top" secondItem="Gcy-eN-Ncf" secondAttribute="top" constant="192" id="1aR-IE-sbx"/>
+                                <constraint firstAttribute="trailing" secondItem="a7H-sv-LW5" secondAttribute="trailing" constant="8" id="7cZ-xg-Bmc"/>
+                                <constraint firstItem="a7H-sv-LW5" firstAttribute="top" secondItem="7Is-Rr-Mbx" secondAttribute="bottom" constant="2" id="99w-Wi-tk4"/>
                                 <constraint firstAttribute="trailing" secondItem="TlS-t6-hpN" secondAttribute="trailing" id="CJb-RN-Zox"/>
+                                <constraint firstItem="daZ-Ah-fGp" firstAttribute="top" secondItem="Gcy-eN-Ncf" secondAttribute="top" constant="25" id="Ix6-1w-e1v"/>
                                 <constraint firstItem="TlS-t6-hpN" firstAttribute="leading" secondItem="Gcy-eN-Ncf" secondAttribute="leading" id="JL8-X9-IPE"/>
                                 <constraint firstItem="TlS-t6-hpN" firstAttribute="top" secondItem="Gcy-eN-Ncf" secondAttribute="top" id="OHF-4L-gtY"/>
                                 <constraint firstItem="daZ-Ah-fGp" firstAttribute="centerX" secondItem="Gcy-eN-Ncf" secondAttribute="centerX" id="Pwb-91-czu"/>
-                                <constraint firstItem="daZ-Ah-fGp" firstAttribute="centerY" secondItem="Gcy-eN-Ncf" secondAttribute="centerY" id="hBR-bM-UL2"/>
+                                <constraint firstItem="GU3-ul-tm4" firstAttribute="centerX" secondItem="daZ-Ah-fGp" secondAttribute="centerX" id="VGU-TY-LJB"/>
+                                <constraint firstItem="7Is-Rr-Mbx" firstAttribute="top" secondItem="GU3-ul-tm4" secondAttribute="bottom" constant="2" id="VSO-32-GNQ"/>
+                                <constraint firstItem="GU3-ul-tm4" firstAttribute="top" secondItem="daZ-Ah-fGp" secondAttribute="bottom" constant="4" id="cP1-Ia-Anx"/>
                                 <constraint firstAttribute="bottom" secondItem="TlS-t6-hpN" secondAttribute="bottom" id="hsx-ih-NC7"/>
+                                <constraint firstItem="7Is-Rr-Mbx" firstAttribute="centerX" secondItem="Gcy-eN-Ncf" secondAttribute="centerX" id="k4b-E8-IPP"/>
+                                <constraint firstItem="a7H-sv-LW5" firstAttribute="leading" secondItem="Gcy-eN-Ncf" secondAttribute="leading" constant="8" id="qgm-S6-1kM"/>
+                                <constraint firstAttribute="bottom" secondItem="a7H-sv-LW5" secondAttribute="bottom" constant="8" id="tvO-n6-K3c"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaA-Mi-XH6">
