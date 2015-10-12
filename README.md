@@ -1,6 +1,6 @@
 ## Twitter Redux
 
-Time spent: `<Number of hours spent>`
+Time spent: `25`
 
 ### Features
 
@@ -19,7 +19,7 @@ Time spent: `<Number of hours spent>`
 #### Optional
 
 - [ ] Profile Page
-   - [ ] Optional: Implement the paging view for the user description.
+   - [x] Optional: Implement the paging view for the user description.
    - [ ] Optional: As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
    - [ ] Optional: Pulling down the profile page should blur and resize the header image.
 - [ ] Optional: Account switching
@@ -30,4 +30,4 @@ Time spent: `<Number of hours spent>`
 
 ### Walkthrough
 
-![Video Walkthrough](https://raw.githubusercontent.com/mvinceable/twitter/master/demo.gif)
+![Video Walkthrough](https://github.com/moog16/twitter_redux/blob/master/twitter_redux.gif)
