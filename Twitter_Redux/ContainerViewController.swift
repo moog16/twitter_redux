@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewControllerDelegate {
+class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewControllerDelegate, TweetsViewControllerDelegate {
     var containerView: UIView?
     var menuView: UIView?
     var selectedViewController: UIViewController?
@@ -26,14 +26,11 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
         addContainerView()
         addMenuView()
         createContraints()
-   
-        let containerViewCenter = CGPoint(x: 250, y: 0)
         let time = dispatch_time(DISPATCH_TIME_NOW, 0)
         
         dispatch_after(time, dispatch_get_main_queue(), {
-            self.scrollView!.setContentOffset(containerViewCenter, animated: false)
+            self.closeMenuSideBar()
         });
-        
     }
     
     func selectViewController(viewController: UIViewController) {
@@ -52,20 +49,30 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
     }
     
     func menuViewControllerDelegate(menuViewController: MenuViewController, didTapMenuTab selectedMenuTab: String) {
-        var viewController: UIViewController?
         switch(selectedMenuTab) {
         case "Home Timeline":
-            viewController = viewControllers[0]
+            let tweetsViewController = viewControllers[0] as! TweetsViewController
+            tweetsViewController.delegate = self
+            selectViewController(tweetsViewController)
         case "Profile":
-            viewController = viewControllers[1]
+            selectCurrentUser()
         default:
-            viewController = viewControllers[1]
+            selectCurrentUser()
         }
-        selectViewController(viewController!)
-        let containerViewCenter = CGPoint(x: 250, y: 0)
-        
+        closeMenuSideBar()
+    }
+    
+    func closeMenuSideBar() {
         createContraints()
+        let containerViewCenter = CGPoint(x: 250, y: 0)
         self.scrollView!.setContentOffset(containerViewCenter, animated: true)
+    }
+    
+    func tweetsViewControllerDelegate(tweetsViewController: TweetsViewController, didUpdateProfileUser user: User) {
+        let userProfileVC = viewControllers[1] as! UserProfileViewController
+        userProfileVC.profileUser = user
+        selectViewController(userProfileVC)
+        closeMenuSideBar()
     }
     
     @IBAction func onSignOut(sender: UIBarButtonItem) {
@@ -81,9 +88,14 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate, MenuViewC
         view.addSubview(scrollView!)
     }
     
+    func selectCurrentUser() {
+        let userProfileViewController = viewControllers[1] as! UserProfileViewController
+        userProfileViewController.profileUser = User.currentUser
+        selectViewController(userProfileViewController)
+    }
+    
     private func addContainerView() {
-        selectViewController(viewControllers[1])
-        selectedViewController = viewControllers[1]
+        selectCurrentUser()
         scrollView!.addSubview(containerView!)
     }
     

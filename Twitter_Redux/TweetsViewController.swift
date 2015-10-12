@@ -8,11 +8,16 @@
 
 import UIKit
 
+@objc protocol TweetsViewControllerDelegate {
+    optional func tweetsViewControllerDelegate(tweetsViewController: TweetsViewController, didUpdateProfileUser user: User)
+}
+
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NewTweetViewControllerDelegate, TweetCellDelegate {
     
     var tweets: [Tweet]?
     var refreshControlTableView: UIRefreshControl!
     @IBOutlet weak var tweetsTableView: UITableView!
+    var delegate: TweetsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,7 +109,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tweetCellDelegate(tweetCell: TweetCell, didTapAvatar tweet: Tweet) {
-        self.performSegueWithIdentifier("newTweetSegue", sender: tweetCell)
+        let user = tweet.user
+        delegate?.tweetsViewControllerDelegate?(self, didUpdateProfileUser: user!)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

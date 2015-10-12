@@ -22,6 +22,15 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     var tweets: [Tweet]?
     var bannerUrl: NSURL?
     var refreshControlTableView: UIRefreshControl?
+    var profileUser: User! {
+        didSet {
+            if self.isViewLoaded() {
+                getUserTimeline(profileUser.screenname, completion: nil)
+                getUserBanner(profileUser.screenname)
+                setProfileStatuses(profileUser)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,37 +43,42 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         userTableView.rowHeight = UITableViewAutomaticDimension
         userTableView.estimatedRowHeight = 150
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.title = "\(User.currentUser?.screenname)"
+//        navigationController?.title = "\(User.currentUser?.screenname)"
 
         
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView!.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         userTableView.insertSubview(refreshControlTableView!, atIndex: 0)
-        getUserTimeline(nil)
-        getUserBanner()
-        setProfileStatuses()
+        
+        
+        getUserTimeline(profileUser.screenname, completion: nil)
+        getUserBanner(profileUser.screenname)
+        setProfileStatuses(profileUser)
     }
     
-    func getUserTimeline(completion:(()->())?) {
-        TwitterClient.sharedInstance.userTimelineWithParams(nil) { (tweets, error) -> () in
-            self.tweets = tweets
-            self.userTableView.reloadData()
-            if completion != nil {
-                completion!()
+    func getUserTimeline(screenname: String?, completion:(()->())?) {
+        if let screenname = screenname {
+            let params = ["screen_name": screenname]
+        
+            TwitterClient.sharedInstance.userTimelineWithParams(params) { (tweets, error) -> () in
+                self.tweets = tweets
+                self.userTableView.reloadData()
+                if completion != nil {
+                    completion!()
+                }
             }
         }
     }
     
     func onRefresh() {
-        getUserTimeline() {
+        getUserTimeline(profileUser?.screenname) {
             refreshControlTableView?.endRefreshing()
         }
     }
     
-    func getUserBanner() {
-        let params: NSDictionary?
-        if let screenname = User.currentUser?.screenname {
-            params = ["screen_name": screenname]
+    func getUserBanner(screenname: String?) {
+        if let screenname = screenname {
+            let params = ["screen_name": screenname]
         
             TwitterClient.sharedInstance.userProfileBannerWithParams(params) {(sizes, error) -> () in
                 if error == nil {
@@ -99,9 +113,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         userTableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func setProfileStatuses() {
-        avatarImageView.setImageWithURL(NSURL(string: User.currentUser!.profileImageUrl!))
-        if let user = User.currentUser {
+    func setProfileStatuses(user: User?) {
+        if let user = user {
+            let avatarUrl = NSURL(string: user.profileImageUrl!)
+            avatarImageView.setImageWithURL(avatarUrl!)
+
             followingCountLabel.text = "\(user.followingCount!)"
             followersCountLabel.text = "\(user.followersCount!)"
             tweetCountLabel.text = "\(user.tweetsCount!)"
